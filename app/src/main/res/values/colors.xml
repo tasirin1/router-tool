@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="restart_bg">#FF5252</color>
+    <color name="status_bg">#4CAF50</color>
+    <color name="password_bg">#FF9800</color>
+    <color name="wifi_bg">#2196F3</color>
+    <color name="info_bg">#9C27B0</color>
+    <color name="speed_bg">#00BCD4</color>
+</resources>
