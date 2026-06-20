@@ -1,43 +1,29 @@
 # Router Tool - Android
 
-![Build](https://github.com/tasirin1/router-tool/actions/workflows/build.yml/badge.svg)
+A clean, efficient Android app for managing Tenda routers (192.168.0.1) with essential features.
 
-Aplikasi Android untuk mengelola router Tenda (192.168.0.1) dengan 6 fitur utama.
+**Features:**
+- 🔄 Restart Router
+- 🌐 Check Connection
+- 🔑 Change Password Admin
+- 📶 Manage WiFi
+- ℹ️ Router Information
+- 🚦 Speed Control
 
-**Support:** HP 📱 & Android TV 📺 (Android 5.0+ / API 21+)
+**Platform:** Android 5.0+ (minSdk 21)
 
-## Fitur
+## Usage
 
-1. 🔄 **Restart Router** — Restart router dari HP/TV dengan 1 tombol
-2. 🌐 **Cek Koneksi** — Cek apakah router merespon
-3. 🔑 **Ganti Password Admin** — Ganti password login router admin
-4. 📶 **Atur WiFi** — Buka halaman pengaturan WiFi router
-5. ℹ️ **Info Router** — Lihat info sistem & status router
-6. 🚦 **Speed Control** — Atur kecepatan internet (bandwidth)
+Open the app and select any feature to manage your Tenda router.
 
-## Download APK
+## Build
 
-1. Buka [GitHub Actions](https://github.com/tasirin1/router-tool/actions)
-2. Klik workflow terbaru yang hijau (✅)
-3. Scroll ke bawah → **Artifacts** → Download **RouterTool-APK**
-4. Install APK di HP/Android TV
+This project uses Gradle. Ensure you have the Android SDK and build tools installed.
 
-## Cara Build Sendiri
-
-### Via GitHub Actions (Mudah)
-Push ke GitHub → Actions build otomatis → Download dari Artifacts
-
-### Via Android Studio
 ```bash
 git clone https://github.com/tasirin1/router-tool.git
 cd router-tool
 ./gradlew assembleRelease
 ```
-APK: `app/build/outputs/apk/release/app-release.apk`
 
-## Catatan
-- Router harus terhubung ke jaringan yang sama (wifi LAN)
-- Default IP: `192.168.0.1` (Tenda)
-- Aplikasi HTTP (tidak perlu root)
-- Navigasi remote Android TV: D-pad + OK
-- WebView built-in untuk akses halaman admin
+APK: `app/build/outputs/apk/release/`
