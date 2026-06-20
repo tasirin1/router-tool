@@ -3,147 +3,499 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F5"
+    android:background="#EEF0F4"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ===== HEADER GRADIENT ===== -->
+            <!-- ═══════════ HEADER WITH SPEED MONITOR ═══════════ -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginHorizontal="0dp"
-                app:cardElevation="4dp"
+                android:layout_height="wrap_content"
+                app:cardElevation="6dp"
                 app:cardCornerRadius="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#1565C0"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="#0D47A1"
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- Title row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="🔧 Router Tool"
-                        android:textColor="#FFFFFF"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🔧 Router Tool"
+                            android:textColor="#FFFFFF"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvLabelSource"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#1FFFFFFF"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="3dp"
+                            android:text="Router"
+                            android:textAllCaps="true"
+                            android:textColor="#B0BEC5"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:text="192.168.0.1 – Tenda"
-                        android:textColor="#B0BEC5"
-                        android:textSize="14sp" />
+                        android:textColor="#5C8BC0"
+                        android:textSize="12sp" />
 
-                    <!-- Speed Monitor -->
+                    <!-- Bandwidth Monitor -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <!-- Download -->
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="50dp"
                                 android:layout_height="wrap_content"
-                                android:text="⬇ Download"
+                                android:text="⬇️ DL"
                                 android:textColor="#81D4FA"
-                                android:textSize="11sp" />
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="8dp"
+                                android:layout_marginHorizontal="8dp"
+                                android:layout_weight="1"
+                                android:background="#1AFFFFFF">
+                                <View
+                                    android:id="@+id/barDown"
+                                    android:layout_width="0dp"
+                                    android:layout_height="8dp"
+                                    android:background="#42A5F5" />
+                            </FrameLayout>
                             <TextView
                                 android:id="@+id/tvSpeedDown"
-                                android:layout_width="wrap_content"
+                                android:layout_width="85dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:gravity="end"
                                 android:text="0 KB/s"
                                 android:textColor="#FFFFFF"
-                                android:textSize="20sp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
-                        <!-- Divider -->
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="36dp"
-                            android:background="#1AFFFFFF" />
-
                         <!-- Upload -->
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="50dp"
                                 android:layout_height="wrap_content"
-                                android:text="⬆ Upload"
+                                android:text="⬆️ UL"
                                 android:textColor="#A5D6A7"
-                                android:textSize="11sp" />
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="8dp"
+                                android:layout_marginHorizontal="8dp"
+                                android:layout_weight="1"
+                                android:background="#1AFFFFFF">
+                                <View
+                                    android:id="@+id/barUp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="8dp"
+                                    android:background="#66BB6A" />
+                            </FrameLayout>
                             <TextView
                                 android:id="@+id/tvSpeedUp"
-                                android:layout_width="wrap_content"
+                                android:layout_width="85dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:gravity="end"
                                 android:text="0 KB/s"
                                 android:textColor="#FFFFFF"
-                                android:textSize="20sp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ===== STATUS BANNER ===== -->
+            <!-- ═══════════ STATUS CARD ═══════════ -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardStatusBanner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="-8dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="12dp"
+                android:layout_marginTop="-10dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="14dp"
                 app:strokeWidth="0dp">
 
-                <TextView
-                    android:id="@+id/tvStatus"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="14dp"
-                    android:text="💡 Tekan Cek Koneksi untuk memeriksa router"
-                    android:textColor="#555"
-                    android:textSize="13sp" />
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <View
+                        android:id="@+id/dotStatus"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="#BDBDBD"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Siap — tekan Cek Koneksi"
+                        android:textColor="#666"
+                        android:textSize="13sp" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ===== INPUT PASSWORD ===== -->
+            <!-- ═══════════ SECTION TITLE ═══════════ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Fitur"
+                android:textColor="#1C1B1F"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- ═══════════ FEATURE GRID ═══════════ -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:columnOrderPreserved="false"
+            android:rowOrderPreserved="false"
+
+            android:verticalSpacing="8dp"
+
+                android:columnCount="2"
+
+                <!-- 1. Restart -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout
+                        android:id="@+id/btnRestart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/circle_restart"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔄"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/restart"
+                            android:textColor="#1C1B1F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="restart perangkat"
+                            android:textColor="#999"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 2. Cek Koneksi -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout
+                        android:id="@+id/btnStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/circle_status"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🌐"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/status"
+                            android:textColor="#1C1B1F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="tes respon router"
+                            android:textColor="#999"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 3. Atur WiFi -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout
+                        android:id="@+id/btnWifi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/circle_wifi"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📶"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/wifi"
+                            android:textColor="#1C1B1F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SSID &amp; pengaturan"
+                            android:textColor="#999"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 4. Info Router -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout
+                        android:id="@+id/btnInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/circle_info"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ℹ️"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/info"
+                            android:textColor="#1C1B1F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="detail firmware"
+                            android:textColor="#999"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 5. Speed Control -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout
+                        android:id="@+id/btnSpeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/circle_speed"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🚦"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/speed_control"
+                            android:textColor="#1C1B1F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="atur bandwidth"
+                            android:textColor="#999"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 6. Ganti Password (grid) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+                    <LinearLayout
+                        android:id="@+id/btnGantiPwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/circle_password"
+                            android:gravity="center">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔑"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/password"
+                            android:textColor="#1C1B1F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ubah password admin"
+                            android:textColor="#999"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
+
+            <!-- ═══════════ PASSWORD FORM (hidden by default, shown when needed) ═══════════ -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPasswordForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
+                android:visibility="gone"
                 app:cardElevation="2dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="14dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
@@ -157,36 +509,45 @@
                         android:layout_height="wrap_content"
                         android:text="🔑 Ganti Password Admin"
                         android:textColor="#1C1B1F"
-                        android:textSize="15sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:hint="@string/password_hint">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPassword"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:hint="@string/password_confirm">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputPassword2"
-                            android:layout_width="match_parent"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_weight="1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:hint="Password baru">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/inputPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:maxLines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Space android:layout_width="8dp" android:layout_height="1dp"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:hint="Konfirmasi">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/inputPassword2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:maxLines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnPassword"
@@ -194,248 +555,15 @@
                         android:layout_height="44dp"
                         android:layout_marginTop="12dp"
                         android:backgroundTint="#FFA726"
-                        android:text="@string/btn_save"
+                        android:text="Simpan Password"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ===== FEATURE CARDS TITLE ===== -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Menu Cepat"
-                android:textColor="#1C1B1F"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <!-- bottom spacer -->
+            <View android:layout_width="match_parent" android:layout_height="24dp" />
 
-            <!-- ===== FEATURE GRID ===== -->
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:columnCount="2">
-
-                <!-- 1. Restart -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout
-                        android:id="@+id/btnRestart"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/circle_restart"
-                            android:gravity="center"
-                            android:text="🔄"
-                            android:textSize="22sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/restart"
-                            android:textColor="#1C1B1F"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1 ketukan"
-                            android:textColor="#999"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- 2. Cek Koneksi -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout
-                        android:id="@+id/btnStatus"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/circle_status"
-                            android:gravity="center"
-                            android:text="🌐"
-                            android:textSize="22sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/status"
-                            android:textColor="#1C1B1F"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="tes respon"
-                            android:textColor="#999"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- 3. Atur WiFi -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout
-                        android:id="@+id/btnWifi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/circle_wifi"
-                            android:gravity="center"
-                            android:text="📶"
-                            android:textSize="22sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/wifi"
-                            android:textColor="#1C1B1F"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SSID &amp; sandi"
-                            android:textColor="#999"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- 4. Info Router -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout
-                        android:id="@+id/btnInfo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/circle_info"
-                            android:gravity="center"
-                            android:text="ℹ️"
-                            android:textSize="22sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/info"
-                            android:textColor="#1C1B1F"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="detail sistem"
-                            android:textColor="#999"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- 5. Speed Control -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="12dp"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
-                    <LinearLayout
-                        android:id="@+id/btnSpeed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/circle_speed"
-                            android:gravity="center"
-                            android:text="🚦"
-                            android:textSize="22sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/speed_control"
-                            android:textColor="#1C1B1F"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="bandwidth"
-                            android:textColor="#999"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </GridLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
