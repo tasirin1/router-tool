@@ -19,7 +19,7 @@
     <string name="wifi">Atur WiFi</string>
     <string name="wifi_desc">Pengaturan jaringan WiFi</string>
     <string name="info">Info Router</string>
-    <string name="info_desc">Detail perangkat & koneksi</string>
+    <string name="info_desc">Detail perangkat &amp; koneksi</string>
     <string name="speed_control">Speed Control</string>
     <string name="speed_control_desc">Atur bandwidth internet</string>
 
