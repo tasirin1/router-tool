@@ -1,34 +1,38 @@
-name: Build Android APK
+name: Build
 
-on:
-  push:
-    branches: [ main, master ]
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-    
-    - name: Build APK with Gradle
-      uses: burrunan/gradle-android-sdk-action@v1
-      with:
-        gradle-version: 8.5
-        arguments: assembleRelease
-        sdk-version: 34
-        build-tools-version: 34.0.0
+      - uses: actions/checkout@v4
+      
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      
+      - name: Install SDK & Build
+        run: |
+          # Minimal Android SDK
+          mkdir -p $ANDROID_HOME/cmdline-tools
+          cd $ANDROID_HOME/cmdline-tools
+          curl -sLo tools.zip "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip"
+          unzip -q tools.zip
+          mv cmdline-tools latest 2>/dev/null || true
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" > /dev/null 2>&1
           
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: RouterTool-APK
-        path: app/build/outputs/apk/release/*.apk
-        if-no-files-found: warn
+          # Gradle
+          curl -sLo /tmp/gradle.zip "https://services.gradle.org/distributions/gradle-8.5-bin.zip"
+          unzip -q /tmp/gradle.zip -d /tmp/
+          /tmp/gradle-8.5/bin/gradle assembleRelease --no-daemon -p ${{ github.workspace }}
+      
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: app/build/outputs/apk/release/*.apk
