@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Router Tool</string>
-    <string name="restart">Restart Router</string>
-    <string name="restart_desc">Merestart router Tenda</string>
-    <string name="status">Cek Koneksi</string>
-    <string name="status_desc">Cek status internet</string>
-    <string name="password">Ganti Password</string>
-    <string name="password_desc">Ganti password admin</string>
-    <string name="wifi">Atur WiFi</string>
-    <string name="wifi_desc">Pengaturan WiFi</string>
-    <string name="info">Info Router</string>
-    <string name="info_desc">Lihat info router</string>
-    <string name="speed">Speed Control</string>
-    <string name="speed_desc">Atur kecepatan jaringan</string>
     <string name="router_ip">192.168.0.1</string>
-    <string name="restart_confirm">Yakin mau restart router?</string>
-    <string name="restart_ok">Perintah restart dikirim!</string>
-    <string name="restart_fail">Gagal: </string>
+
+    <!-- Speed monitor -->
+    <string name="speed_title">Monitor Kecepatan</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="speed_idle">Memantau…</string>
+
+    <!-- Cards -->
+    <string name="restart">Restart Router</string>
+    <string name="restart_desc">Restart perangkat Tenda</string>
+    <string name="status">Cek Koneksi</string>
+    <string name="status_desc">Tes respon router</string>
+    <string name="password">Ganti Password</string>
+    <string name="password_desc">Ubah password admin</string>
+    <string name="wifi">Atur WiFi</string>
+    <string name="wifi_desc">Pengaturan jaringan WiFi</string>
+    <string name="info">Info Router</string>
+    <string name="info_desc">Detail perangkat & koneksi</string>
+    <string name="speed_control">Speed Control</string>
+    <string name="speed_control_desc">Atur bandwidth internet</string>
+
+    <!-- Actions -->
+    <string name="restart_confirm">Yakin mau restart router?\nKoneksi akan putus ~30 detik.</string>
+    <string name="restart_sent">✅ Perintah restart terkirim!</string>
     <string name="restart_wait">Tunggu ~30 detik…</string>
-    <string name="status_check">Memeriksa koneksi…</string>
-    <string name="status_ok">Router merespon ✅</string>
-    <string name="status_fail">Tidak ada respon ❌</string>
-    <string name="password_hint">Password baru (min 3)</string>
-    <string name="password_confirm">Konfirmasi password</string>
-    <string name="password_send">Ganti Password</string>
-    <string name="password_ok">Password berhasil diganti! ✅</string>
-    <string name="password_fail">Gagal ganti password ❌</string>
-    <string name="password_error">Password minimal 3 karakter</string>
+    <string name="password_hint">Password baru (min 3 karakter)</string>
+    <string name="password_confirm">Ulangi password baru</string>
+    <string name="password_error_min">Password minimal 3 karakter</string>
+    <string name="password_error_match">Password tidak cocok!</string>
+    <string name="password_ok">✅ Password berhasil diganti!</string>
+    <string name="status_ok">✅ Router merespon</string>
+    <string name="status_fail">❌ Router tidak merespon</string>
+    <string name="status_checking">Memeriksa koneksi…</string>
+    <string name="btn_open">Buka</string>
+    <string name="btn_restart">Restart</string>
+    <string name="btn_check">Cek</string>
+    <string name="btn_save">Simpan</string>
+    <string name="yes">Ya</string>
+    <string name="cancel">Batal</string>
 </resources>

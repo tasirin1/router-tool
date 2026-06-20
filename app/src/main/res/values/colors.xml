@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="restart_bg">#FF5252</color>
-    <color name="status_bg">#4CAF50</color>
-    <color name="password_bg">#FF9800</color>
-    <color name="wifi_bg">#2196F3</color>
-    <color name="info_bg">#9C27B0</color>
-    <color name="speed_bg">#00BCD4</color>
+    <color name="md_primary">#1565C0</color>
+    <color name="md_primary_dark">#0D47A1</color>
+    <color name="md_on_primary">#FFFFFF</color>
+    <color name="md_secondary">#00897B</color>
+    <color name="md_surface">#FFFFFF</color>
+    <color name="md_background">#F0F2F5</color>
+    <color name="md_error">#D32F2F</color>
+    <color name="md_on_surface">#1C1B1F</color>
+    <color name="md_outline">#E0E0E0</color>
+
+    <!-- Card colors -->
+    <color name="card_restart">#EF5350</color>
+    <color name="card_status">#66BB6A</color>
+    <color name="card_password">#FFA726</color>
+    <color name="card_wifi">#42A5F5</color>
+    <color name="card_info">#AB47BC</color>
+    <color name="card_speed">#26C6DA</color>
+
+    <!-- Speed colors -->
+    <color name="speed_download">#42A5F5</color>
+    <color name="speed_upload">#66BB6A</color>
 </resources>
