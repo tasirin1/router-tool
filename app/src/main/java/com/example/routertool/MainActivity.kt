@@ -1,8 +1,6 @@
 package com.example.routertool
 
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -39,14 +37,12 @@ class MainActivity : AppCompatActivity() {
         dotStatus = findViewById(R.id.dotStatus)
         cardPasswordForm = findViewById(R.id.cardPasswordForm)
 
-        // Feature clicks
+        // Feature clicks - only 4 cards now
         findViewById<MaterialCardView>(R.id.btnRestart).setOnClickListener { confirmRestart() }
         findViewById<MaterialCardView>(R.id.btnStatus).setOnClickListener { cekKoneksi() }
-        findViewById<MaterialCardView>(R.id.btnWifi).setOnClickListener { openBrowser("http://192.168.0.1/index.htm") }
-        findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { openBrowser("http://192.168.0.1/system.htm") }
-        findViewById<MaterialCardView>(R.id.btnSpeed).setOnClickListener { openBrowser("http://192.168.0.1/net-control.htm") }
-        findViewById<MaterialCardView>(R.id.btnGantiPwd).setOnClickListener { togglePasswordForm() }
-        findViewById<MaterialButton>(R.id.btnPassword).setOnClickListener { gantiPassword() }
+        findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { openBrowser() }
+        findViewById<MaterialCardView>(R.id.btnPassword).setOnClickListener { togglePasswordForm() }
+        findViewById<MaterialButton>(R.id.btnSavePassword).setOnClickListener { gantiPassword() }
     }
 
     // ─── RESTART ────────────────────────────────────────────────
@@ -116,6 +112,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // ─── INFO ROUTER ─────────────────────────────────────────
+
+    private fun openBrowser() {
+        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("http://192.168.0.1/system.htm"))
+        startActivity(intent)
+    }
+
     // ─── GANTI PASSWORD ──────────────────────────────────────
 
     private fun togglePasswordForm() {
@@ -165,14 +168,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     // ─── HELPERS ─────────────────────────────────────────────
-
-    private fun openBrowser(url: String) {
-        val intent = Intent(this, WebActivity::class.java).apply {
-            putExtra("url", url)
-            putExtra("cursorMode", true)
-        }
-        startActivity(intent)
-    }
 
     private fun setStatus(msg: String, colorHex: String, ok: Boolean) {
         tvStatus.text = msg
