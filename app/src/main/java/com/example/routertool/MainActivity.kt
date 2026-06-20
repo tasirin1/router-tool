@@ -2,10 +2,10 @@ package com.example.routertool
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.LinearLayout
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         // Feature clicks
         findViewById<MaterialCardView>(R.id.btnRestart).setOnClickListener { confirmRestart() }
         findViewById<MaterialCardView>(R.id.btnStatus).setOnClickListener { cekKoneksi() }
-        findViewById<MaterialCardView>(R.id.btnWifi).setOnClickListener { bukaHalaman("http://192.168.0.1/index.htm") }
-        findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { bukaHalaman("http://192.168.0.1/system.htm") }
-        findViewById<MaterialCardView>(R.id.btnSpeed).setOnClickListener { bukaHalaman("http://192.168.0.1/net-control.htm") }
+        findViewById<MaterialCardView>(R.id.btnWifi).setOnClickListener { openBrowser("http://192.168.0.1/index.htm") }
+        findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { openBrowser("http://192.168.0.1/system.htm") }
+        findViewById<MaterialCardView>(R.id.btnSpeed).setOnClickListener { openBrowser("http://192.168.0.1/net-control.htm") }
         findViewById<MaterialCardView>(R.id.btnGantiPwd).setOnClickListener { togglePasswordForm() }
         findViewById<MaterialButton>(R.id.btnPassword).setOnClickListener { gantiPassword() }
     }
@@ -166,10 +166,9 @@ class MainActivity : AppCompatActivity() {
 
     // ─── HELPERS ─────────────────────────────────────────────
 
-    private fun bukaHalaman(url: String) {
+    private fun openBrowser(url: String) {
         val intent = Intent(this, WebActivity::class.java).apply {
             putExtra("url", url)
-            // Enable D-pad cursor mode for Android TV / remote users
             putExtra("cursorMode", true)
         }
         startActivity(intent)
