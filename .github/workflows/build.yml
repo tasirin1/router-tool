@@ -34,21 +34,27 @@ jobs:
         restore-keys: |
           gradle-
           
+    - name: Generate Gradle Wrapper
+      run: |
+        cd ${{ github.workspace }}
+        # Download gradle wrapper jar
+        curl -sL "https://github.com/gradle/gradle/raw/v8.5.0/gradle/wrapper/gradle-wrapper.jar" -o gradle/wrapper/gradle-wrapper.jar 2>/dev/null || true
+        # If that fails, use gradle directly
+        if [ ! -f gradle/wrapper/gradle-wrapper.jar ] || [ ! -s gradle/wrapper/gradle-wrapper.jar ]; then
+          echo "Downloading gradle to generate wrapper..."
+          cd /tmp
+          curl -sL "https://services.gradle.org/distributions/gradle-8.5-bin.zip" -o gradle.zip
+          unzip -q gradle.zip
+          cd ${{ github.workspace }}
+          /tmp/gradle-8.5/bin/gradle wrapper --gradle-version 8.5
+        fi
+        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
       run: ./gradlew assembleRelease
       
-    - name: Sign APK
-      uses: ilharp/sign-android-release@v1
-      with:
-        releaseDir: app/build/outputs/apk/release
-        signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
-        keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-        keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
