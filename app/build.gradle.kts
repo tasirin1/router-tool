@@ -15,9 +15,19 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file(System.getenv("KEYSTORE_PATH") ?: "router.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "router123"
+            keyAlias = System.getenv("KEY_ALIAS") ?: "router"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "router123"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
