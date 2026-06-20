@@ -97,6 +97,14 @@ class WebActivity : AppCompatActivity() {
         }
     }
 
+    private fun injekCursor() {
+        webView.post {
+            try {
+                webView.evaluateJavascript(cursorJs, null)
+            } catch (_: Exception) { }
+        }
+    }
+
     private fun showCursor() {
         val display = resources.displayMetrics
         cursorX = display.widthPixels / 2f
