@@ -72,9 +72,12 @@ class WebActivity : AppCompatActivity() {
             domStorageEnabled = true
             loadWithOverviewMode = true
             useWideViewPort = true
-            builtInZoomControls = true
             displayZoomControls = false
         }
+
+        webView.isFocusable = false
+        webView.isFocusableInTouchMode = false
+        webView.settings.builtInZoomControls = false
 
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
@@ -140,18 +143,23 @@ class WebActivity : AppCompatActivity() {
         }
     }
 
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        if (cursorMode && event != null && event.action == KeyEvent.ACTION_DOWN) {
+            when (event.keyCode) {
+                KeyEvent.KEYCODE_DPAD_UP    -> { geser(0f, -stepSize); return true }
+                KeyEvent.KEYCODE_DPAD_DOWN  -> { geser(0f, stepSize); return true }
+                KeyEvent.KEYCODE_DPAD_LEFT  -> { geser(-stepSize, 0f); return true }
+                KeyEvent.KEYCODE_DPAD_RIGHT -> { geser(stepSize, 0f); return true }
+                KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER -> { klik(); return true }
+                KeyEvent.KEYCODE_BACK -> { finish(); return true }
+            }
+        }
+        return super.dispatchKeyEvent(event)
+    }
+
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (!cursorMode) return super.onKeyDown(keyCode, event)
-
-        return when (keyCode) {
-            KeyEvent.KEYCODE_DPAD_UP    -> { geser(0f, -stepSize); true }
-            KeyEvent.KEYCODE_DPAD_DOWN  -> { geser(0f, stepSize); true }
-            KeyEvent.KEYCODE_DPAD_LEFT  -> { geser(-stepSize, 0f); true }
-            KeyEvent.KEYCODE_DPAD_RIGHT -> { geser(stepSize, 0f); true }
-            KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER -> { klik(); true }
-            KeyEvent.KEYCODE_BACK -> { finish(); true }
-            else -> super.onKeyDown(keyCode, event)
-        }
+        return true // consumed by dispatchKeyEvent
     }
 
     private fun geser(dx: Float, dy: Float) {
