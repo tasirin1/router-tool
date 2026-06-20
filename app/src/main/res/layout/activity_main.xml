@@ -208,11 +208,10 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:columnOrderPreserved="false"
-            android:rowOrderPreserved="false"
-
-            android:verticalSpacing="8dp"
-
-                android:columnCount="2"
+                android:rowOrderPreserved="false"
+                android:horizontalSpacing="8dp"
+                android:verticalSpacing="8dp"
+                android:columnCount="2">
 
                 <!-- 1. Restart -->
                 <com.google.android.material.card.MaterialCardView
