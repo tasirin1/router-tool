@@ -33,6 +33,7 @@
         <activity
             android:name=".WebActivity"
             android:exported="false"
-            android:theme="@style/Theme.RouterTool" />
+            android:theme="@style/Theme.RouterTool"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 </manifest>

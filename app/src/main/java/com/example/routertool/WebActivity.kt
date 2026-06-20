@@ -188,7 +188,7 @@ class WebActivity : AppCompatActivity() {
                     ['mousedown','mouseup','click'].forEach(function(t){
                         try{el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,clientX:x,clientY:y,button:0}));}catch(e){}
                     });
-                    try{el.focus();}catch(e){}
+                    // No focus() — mencegah keyboard muncul
                 }
             })()
         """.trimIndent(), null)
