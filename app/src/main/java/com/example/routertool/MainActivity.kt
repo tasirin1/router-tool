@@ -40,12 +40,12 @@ class MainActivity : AppCompatActivity() {
         cardPasswordForm = findViewById(R.id.cardPasswordForm)
 
         // Feature clicks
-        findViewById<LinearLayout>(R.id.btnRestart).setOnClickListener { confirmRestart() }
-        findViewById<LinearLayout>(R.id.btnStatus).setOnClickListener { cekKoneksi() }
-        findViewById<LinearLayout>(R.id.btnWifi).setOnClickListener { bukaHalaman("http://192.168.0.1/index.htm") }
-        findViewById<LinearLayout>(R.id.btnInfo).setOnClickListener { bukaHalaman("http://192.168.0.1/system.htm") }
-        findViewById<LinearLayout>(R.id.btnSpeed).setOnClickListener { bukaHalaman("http://192.168.0.1/net-control.htm") }
-        findViewById<LinearLayout>(R.id.btnGantiPwd).setOnClickListener { togglePasswordForm() }
+        findViewById<MaterialCardView>(R.id.btnRestart).setOnClickListener { confirmRestart() }
+        findViewById<MaterialCardView>(R.id.btnStatus).setOnClickListener { cekKoneksi() }
+        findViewById<MaterialCardView>(R.id.btnWifi).setOnClickListener { bukaHalaman("http://192.168.0.1/index.htm") }
+        findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { bukaHalaman("http://192.168.0.1/system.htm") }
+        findViewById<MaterialCardView>(R.id.btnSpeed).setOnClickListener { bukaHalaman("http://192.168.0.1/net-control.htm") }
+        findViewById<MaterialCardView>(R.id.btnGantiPwd).setOnClickListener { togglePasswordForm() }
         findViewById<MaterialButton>(R.id.btnPassword).setOnClickListener { gantiPassword() }
     }
 

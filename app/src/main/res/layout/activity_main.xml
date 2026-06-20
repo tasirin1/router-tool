@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ═══ App Title ═══ -->
+            <!-- ═══ Title ═══ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <!-- ═══ Status Banner ═══ -->
+            <!-- ═══ Status ═══ -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardStatusBanner"
                 android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                         android:id="@+id/tvStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Router siap dikelola"
+                        android:text="Router siap"
                         android:textColor="#8E8E9A"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -91,205 +91,307 @@
 
                 <!-- 1. Restart -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnRestart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="#EEEEF2"
-                    app:strokeWidth="1dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
+                    app:strokeWidth="1dp">
                     <LinearLayout
-                        android:id="@+id/btnRestart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:focusable="false">
                         <LinearLayout
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:background="@drawable/circle_restart"
-                            android:gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="🔄" android:textSize="20sp" />
+                            android:gravity="center"
+                            android:focusable="false">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔄"
+                                android:textSize="20sp"
+                                android:focusable="false" />
                         </LinearLayout>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" android:text="Restart"
-                            android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Router" android:textColor="#8E8E9A" android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Restart"
+                            android:textColor="#1A1A2E"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Router"
+                            android:textColor="#8E8E9A"
+                            android:textSize="11sp"
+                            android:focusable="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- 2. Cek Koneksi -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="#EEEEF2"
-                    app:strokeWidth="1dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
+                    app:strokeWidth="1dp">
                     <LinearLayout
-                        android:id="@+id/btnStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:focusable="false">
                         <LinearLayout
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:background="@drawable/circle_status"
-                            android:gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="🌐" android:textSize="20sp" />
+                            android:gravity="center"
+                            android:focusable="false">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🌐"
+                                android:textSize="20sp"
+                                android:focusable="false" />
                         </LinearLayout>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" android:text="Cek"
-                            android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Koneksi" android:textColor="#8E8E9A" android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Cek"
+                            android:textColor="#1A1A2E"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Koneksi"
+                            android:textColor="#8E8E9A"
+                            android:textSize="11sp"
+                            android:focusable="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- 3. WiFi -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnWifi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="#EEEEF2"
-                    app:strokeWidth="1dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
+                    app:strokeWidth="1dp">
                     <LinearLayout
-                        android:id="@+id/btnWifi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:focusable="false">
                         <LinearLayout
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:background="@drawable/circle_wifi"
-                            android:gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="📶" android:textSize="20sp" />
+                            android:gravity="center"
+                            android:focusable="false">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📶"
+                                android:textSize="20sp"
+                                android:focusable="false" />
                         </LinearLayout>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" android:text="WiFi"
-                            android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Pengaturan" android:textColor="#8E8E9A" android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="WiFi"
+                            android:textColor="#1A1A2E"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pengaturan"
+                            android:textColor="#8E8E9A"
+                            android:textSize="11sp"
+                            android:focusable="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- 4. Info -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="#EEEEF2"
-                    app:strokeWidth="1dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
+                    app:strokeWidth="1dp">
                     <LinearLayout
-                        android:id="@+id/btnInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:focusable="false">
                         <LinearLayout
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:background="@drawable/circle_info"
-                            android:gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="ℹ️" android:textSize="20sp" />
+                            android:gravity="center"
+                            android:focusable="false">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ℹ️"
+                                android:textSize="20sp"
+                                android:focusable="false" />
                         </LinearLayout>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" android:text="Info"
-                            android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Router" android:textColor="#8E8E9A" android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Info"
+                            android:textColor="#1A1A2E"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Router"
+                            android:textColor="#8E8E9A"
+                            android:textSize="11sp"
+                            android:focusable="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- 5. Speed -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnSpeed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="#EEEEF2"
-                    app:strokeWidth="1dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
+                    app:strokeWidth="1dp">
                     <LinearLayout
-                        android:id="@+id/btnSpeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:focusable="false">
                         <LinearLayout
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:background="@drawable/circle_speed"
-                            android:gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="🚦" android:textSize="20sp" />
+                            android:gravity="center"
+                            android:focusable="false">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🚦"
+                                android:textSize="20sp"
+                                android:focusable="false" />
                         </LinearLayout>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" android:text="Speed"
-                            android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Bandwidth" android:textColor="#8E8E9A" android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Speed"
+                            android:textColor="#1A1A2E"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bandwidth"
+                            android:textColor="#8E8E9A"
+                            android:textSize="11sp"
+                            android:focusable="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- 6. Password -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnGantiPwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardElevation="0dp"
                     app:cardCornerRadius="16dp"
                     app:strokeColor="#EEEEF2"
-                    app:strokeWidth="1dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground">
+                    app:strokeWidth="1dp">
                     <LinearLayout
-                        android:id="@+id/btnGantiPwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:focusable="false">
                         <LinearLayout
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:background="@drawable/circle_password"
-                            android:gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="🔑" android:textSize="20sp" />
+                            android:gravity="center"
+                            android:focusable="false">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔑"
+                                android:textSize="20sp"
+                                android:focusable="false" />
                         </LinearLayout>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp" android:text="Password"
-                            android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Admin" android:textColor="#8E8E9A" android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Password"
+                            android:textColor="#1A1A2E"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Admin"
+                            android:textColor="#8E8E9A"
+                            android:textSize="11sp"
+                            android:focusable="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
