@@ -343,7 +343,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SSID & sandi"
+                            android:text="SSID &amp; sandi"
                             android:textColor="#999"
                             android:textSize="11sp" />
                     </LinearLayout>
