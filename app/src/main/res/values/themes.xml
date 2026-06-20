@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.RouterTool" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#1565C0</item>
-        <item name="colorPrimaryVariant">#0D47A1</item>
+        <item name="colorPrimary">#1A1A2E</item>
+        <item name="colorPrimaryVariant">#0F0F1A</item>
         <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#00897B</item>
-        <item name="colorSecondaryVariant">#00695C</item>
+        <item name="colorSecondary">#4A6CF7</item>
+        <item name="colorSecondaryVariant">#3B5DE7</item>
         <item name="colorOnSecondary">#FFFFFF</item>
-        <item name="android:statusBarColor">#0D47A1</item>
-        <item name="android:navigationBarColor">#F0F2F5</item>
+        <item name="android:statusBarColor">#1A1A2E</item>
+        <item name="android:navigationBarColor">#F5F5FA</item>
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 </resources>

@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="md_primary">#1565C0</color>
-    <color name="md_primary_dark">#0D47A1</color>
-    <color name="md_on_primary">#FFFFFF</color>
-    <color name="md_secondary">#00897B</color>
-    <color name="md_surface">#FFFFFF</color>
-    <color name="md_background">#F0F2F5</color>
-    <color name="md_error">#D32F2F</color>
-    <color name="md_on_surface">#1C1B1F</color>
-    <color name="md_outline">#E0E0E0</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="background">#F5F5FA</color>
+    <color name="on_surface">#1A1A2E</color>
+    <color name="text_secondary">#8E8E9A</color>
+    <color name="primary">#1A1A2E</color>
+    <color name="primary_dark">#0F0F1A</color>
+    <color name="accent_blue">#4A6CF7</color>
+    <color name="accent_green">#22C55E</color>
+    <color name="accent_orange">#F59E0B</color>
+    <color name="accent_red">#EF4444</color>
+    <color name="divider">#EEEEF2</color>
 
-    <!-- Card colors -->
-    <color name="card_restart">#EF5350</color>
-    <color name="card_status">#66BB6A</color>
-    <color name="card_password">#FFA726</color>
-    <color name="card_wifi">#42A5F5</color>
-    <color name="card_info">#AB47BC</color>
-    <color name="card_speed">#26C6DA</color>
-
-    <!-- Speed colors -->
-    <color name="speed_download">#42A5F5</color>
-    <color name="speed_upload">#66BB6A</color>
+    <color name="card_restart">#FFF1F0</color>
+    <color name="card_status">#F0FFF4</color>
+    <color name="card_wifi">#F0F5FF</color>
+    <color name="card_info">#F8F0FF</color>
+    <color name="card_speed">#F0FFFE</color>
+    <color name="card_password">#FFF8F0</color>
 </resources>
