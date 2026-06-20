@@ -72,7 +72,7 @@
                         android:id="@+id/tvStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Router siap"
+                        android:text="Ready"
                         android:textColor="#8E8E9A"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -176,7 +176,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Cek"
+                            android:text="Check"
                             android:textColor="#1A1A2E"
                             android:textSize="14sp"
                             android:textStyle="bold"
@@ -184,7 +184,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Koneksi"
+                            android:text="Connection"
                             android:textColor="#8E8E9A"
                             android:textSize="11sp"
                             android:focusable="false" />
@@ -235,7 +235,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pengaturan"
+                            android:text="Settings"
                             android:textColor="#8E8E9A"
                             android:textSize="11sp"
                             android:focusable="false" />
@@ -418,7 +418,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔑 Ganti Password"
+                        android:text="🔑 Change Password"
                         android:textColor="#1A1A2E"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -457,7 +457,7 @@
                         android:layout_height="44dp"
                         android:layout_marginTop="14dp"
                         android:backgroundTint="#4A6CF7"
-                        android:text="Simpan"
+                        android:text="Save"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
                 </LinearLayout>

@@ -61,7 +61,7 @@ class WebActivity : AppCompatActivity() {
 
         if (cursorMode) {
             showCursor()
-            Toast.makeText(this, "D-pad: gerak · OK: klik", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "D-pad: move · OK: click", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -54,14 +54,14 @@ class MainActivity : AppCompatActivity() {
     private fun confirmRestart() {
         AlertDialog.Builder(this)
             .setTitle("🔄 Restart Router")
-            .setMessage("Yakin mau restart router?\nKoneksi akan putus ~30 detik.")
-            .setPositiveButton("Ya, Restart") { _, _ -> restartRouter() }
-            .setNegativeButton("Batal", null)
+            .setMessage("Restart the router?\nConnection will drop for ~30 sec.")
+            .setPositiveButton("Yes, Restart") { _, _ -> restartRouter() }
+            .setNegativeButton("Cancel", null)
             .show()
     }
 
     private fun restartRouter() {
-        setStatus("Mengirim perintah restart...", "#FF9800", true)
+        setStatus("Sending restart command...", "#FF9800", true)
         executor.execute {
             try {
                 val url = URL("http://192.168.0.1/goform/SysToolReboot")
@@ -77,11 +77,11 @@ class MainActivity : AppCompatActivity() {
                 conn.responseCode
                 conn.disconnect()
                 handler.post {
-                    setStatus("Perintah restart terkirim! Tunggu ~30 detik...", "#4CAF50", true)
-                    Snackbar.make(findViewById(android.R.id.content), "✅ Restart dikirim!", Snackbar.LENGTH_LONG).show()
+                    setStatus("Restart sent! Wait ~30 seconds...", "#4CAF50", true)
+                    Snackbar.make(findViewById(android.R.id.content), "✅ Restart sent!", Snackbar.LENGTH_LONG).show()
                 }
             } catch (_: Exception) {
-                handler.post { setStatus("Restart berhasil (router offline)", "#4CAF50", true) }
+                handler.post { setStatus("Restart done (router offline)", "#4CAF50", true) }
             }
         }
     }
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
     // ─── CEK KONEKSI ─────────────────────────────────────────
 
     private fun cekKoneksi() {
-        setStatus("Memeriksa koneksi...", "#FF9800", true)
+        setStatus("Checking connection...", "#FF9800", true)
         executor.execute {
             try {
                 val url = URL("http://192.168.0.1/")
@@ -101,16 +101,16 @@ class MainActivity : AppCompatActivity() {
                 conn.disconnect()
                 handler.post {
                     if (code == 302 || code == 200) {
-                        setStatus("Router merespon (HTTP $code)", "#4CAF50", true)
-                        Toast.makeText(this, "Router hidup ✅", Toast.LENGTH_SHORT).show()
+                        setStatus("Router responds (HTTP $code)", "#4CAF50", true)
+                        Toast.makeText(this, "Router is alive ✅", Toast.LENGTH_SHORT).show()
                     } else {
-                        setStatus("Respon aneh: HTTP $code", "#FF9800", true)
+                        setStatus("Strange response: HTTP $code", "#FF9800", true)
                     }
                 }
             } catch (e: Exception) {
                 handler.post {
-                    setStatus("Router tidak merespon", "#F44336", false)
-                    Toast.makeText(this, "Gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+                    setStatus("Router not responding", "#F44336", false)
+                    Toast.makeText(this, "Failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -128,15 +128,15 @@ class MainActivity : AppCompatActivity() {
         val pwd2 = findViewById<TextInputEditText>(R.id.inputPassword2).text.toString()
 
         if (pwd1.length < 3) {
-            Toast.makeText(this, "Password minimal 3 karakter", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Password min 3 characters", Toast.LENGTH_SHORT).show()
             return
         }
         if (pwd1 != pwd2) {
-            Toast.makeText(this, "Password tidak cocok!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show()
             return
         }
 
-        setStatus("Mengganti password...", "#FF9800", true)
+        setStatus("Changing password...", "#FF9800", true)
         executor.execute {
             try {
                 val url = URL("http://192.168.0.1/goform/SysToolChangePwd")
@@ -152,13 +152,13 @@ class MainActivity : AppCompatActivity() {
                 val code = conn.responseCode
                 conn.disconnect()
                 handler.post {
-                    setStatus("Password berhasil diganti! (HTTP $code)", "#4CAF50", true)
-                    Snackbar.make(findViewById(android.R.id.content), "✅ Password diganti!", Snackbar.LENGTH_LONG).show()
+                    setStatus("Password changed! (HTTP $code)", "#4CAF50", true)
+                    Snackbar.make(findViewById(android.R.id.content), "✅ Password changed!", Snackbar.LENGTH_LONG).show()
                 }
             } catch (e: Exception) {
                 handler.post {
-                    setStatus("Gagal: ${e.message}", "#F44336", false)
-                    Toast.makeText(this, "Gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+                    setStatus("Failed: ${e.message}", "#F44336", false)
+                    Toast.makeText(this, "Failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
