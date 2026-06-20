@@ -4,7 +4,6 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Simple router icon -->
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M54,38 L54,38 C56.761,38 59,40.239 59,43 L59,55 L49,55 L49,43 C49,40.239 51.239,38 54,38Z" />
@@ -14,5 +13,7 @@
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M34,69 L34,69 L74,69 L74,73 L34,73Z" />
-    <circle android:fillColor="#FFFFFF" android:cx="54" android:cy="50" android:r="3" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M51,47 A3,3 0 1,1 57,47 A3,3 0 1,1 51,47Z" />
 </vector>
