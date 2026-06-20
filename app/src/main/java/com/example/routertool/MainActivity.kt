@@ -229,7 +229,7 @@ class MainActivity : AppCompatActivity() {
         // Auto-scale bars based on peak speed
         if (downBps > maxSpeed) maxSpeed = downBps * 1.2
         if (upBps > maxSpeed) maxSpeed = upBps * 1.2
-        if (maxSpeed < 1_000_000) maxSpeed = 1_000_000
+        if (maxSpeed < 1_000_000.0) maxSpeed = 1_000_000.0
 
         setBarWidth(barDown, downBps)
         setBarWidth(barUp, upBps)
