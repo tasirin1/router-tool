@@ -42,6 +42,62 @@ class WebActivity : AppCompatActivity() {
             v.style.cssText = 'position:absolute;left:50%;top:3px;bottom:3px;width:1px;background:#FF5722;';
             d.appendChild(h); d.appendChild(v);
             document.body.appendChild(d);
+            // Chinese to English translation for Tenda router pages
+            var cnMap = {
+                '登录':'Login','用户名':'Username','密码':'Password','确定':'OK',
+                '取消':'Cancel','应用':'Apply','保存':'Save','重置':'Reset',
+                '系统状态':'System Status','网络状态':'Network Status','无线设置':'Wireless',
+                '无线网络':'WiFi','安全设置':'Security','高级设置':'Advanced',
+                '系统工具':'System Tools','重启路由器':'Reboot Router',
+                '恢复出厂设置':'Factory Reset','备份配置':'Backup Config',
+                '固件升级':'Firmware Upgrade','修改密码':'Change Password',
+                '管理':'Admin','设置':'Settings','状态':'Status',
+                '连接':'Connect','断开':'Disconnect','已连接':'Connected',
+                'WAN口状态':'WAN Status','LAN口状态':'LAN Status',
+                'MAC地址':'MAC Address','IP地址':'IP Address',
+                '子网掩码':'Subnet Mask','默认网关':'Default Gateway',
+                '主DNS':'Primary DNS','备用DNS':'Secondary DNS',
+                '上传':'Upload','下载':'Download','速度':'Speed',
+                '流量':'Traffic','总流量':'Total Traffic',
+                '当前速率':'Current Speed','最大速率':'Max Speed',
+                '信号强度':'Signal Strength','信道':'Channel','模式':'Mode',
+                '加密方式':'Encryption','SSID':'SSID','频段':'Band',
+                '客户端':'Clients','设备':'Devices','在线':'Online',
+                '离线':'Offline','启用':'Enable','禁用':'Disable',
+                '开启':'On','关闭':'Off','开':'ON','关':'OFF',
+                '首页':'Home','帮助':'Help','关于':'About',
+                '小时':'h','分钟':'min','秒':'sec','天':'days',
+                '192.168.0.1':'192.168.0.1' // keep IP intact
+            };
+            var all = document.body.querySelectorAll('*');
+            for(var i=0;i<all.length;i++){
+                var el=all[i];
+                if(el.childNodes.length==1&&el.childNodes[0].nodeType==3){
+                    var txt=el.childNodes[0].nodeValue.trim();
+                    if(txt&&cnMap[txt]!=null){
+                        el.childNodes[0].nodeValue=cnMap[txt];
+                    }
+                }
+                if(el.getAttribute&&el.getAttribute('value')&&cnMap[el.getAttribute('value')]!=null){
+                    el.setAttribute('value',cnMap[el.getAttribute('value')]);
+                }
+                if(el.placeholder&&cnMap[el.placeholder]!=null){
+                    el.placeholder=cnMap[el.placeholder];
+                }
+                if(el.title&&cnMap[el.title]!=null){
+                    el.title=cnMap[el.title];
+                }
+            }
+            // Also translate any visible text nodes
+            function translateNode(n){
+                if(n.nodeType==3){
+                    var t=n.nodeValue.trim();
+                    if(t&&cnMap[t]!=null)n.nodeValue=cnMap[t];
+                }else if(n.nodeType==1&&n.childNodes){
+                    for(var j=0;j<n.childNodes.length;j++)translateNode(n.childNodes[j]);
+                }
+            }
+            translateNode(document.body);
             return true;
         })()
     """.trimIndent()
@@ -188,7 +244,7 @@ class WebActivity : AppCompatActivity() {
                     ['mousedown','mouseup','click'].forEach(function(t){
                         try{el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,clientX:x,clientY:y,button:0}));}catch(e){}
                     });
-                    // No focus() — mencegah keyboard muncul
+                    try{el.focus();}catch(e){}
                 }
             })()
         """.trimIndent(), null)
