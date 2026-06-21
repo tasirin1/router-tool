@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M0,0L320,0L320,180L0,180Z" />
+
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M120,95 L200,95 L200,108 L120,108Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M126,90 L194,90 L194,94 L126,94Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M127,90 L129,90 L128,70 L126,70Z" />
+    <path
+        android:fillColor="#FF6F00"
+        android:pathData="M127,70 L127,70 C130,70 130,65 127,65 C124,65 124,70 127,70Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M191,90 L193,90 L194,70 L192,70Z" />
+    <path
+        android:fillColor="#FF6F00"
+        android:pathData="M192,70 L192,70 C195,70 195,65 192,65 C189,65 189,70 192,70Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M134,99 A2,2 0 1,1 139,99 A2,2 0 1,1 134,99Z" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M145,99 A2,2 0 1,1 150,99 A2,2 0 1,1 145,99Z" />
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M156,99 A2,2 0 1,1 161,99 A2,2 0 1,1 156,99Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M160,112Q145,125 160,138Q175,125 160,112Z" />
+
+    <text
+        android:fillColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:x="160"
+        android:y="155"
+        android:text="Router Tool"
+        android:textAlignment="center" />
+</vector>

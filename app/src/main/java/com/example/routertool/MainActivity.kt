@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<MaterialCardView>(R.id.btnStatus).setOnClickListener { checkConnection() }
         findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { openInfo() }
         findViewById<MaterialCardView>(R.id.btnDevices).setOnClickListener { showDevices() }
+        findViewById<MaterialCardView>(R.id.btnWeb).setOnClickListener { openWeb() }
         findViewById<MaterialCardView>(R.id.btnPassword).setOnClickListener { togglePassword() }
         findViewById<MaterialButton>(R.id.btnSavePassword).setOnClickListener { changePassword() }
     }
@@ -187,6 +188,14 @@ class MainActivity : AppCompatActivity() {
             .setItems(items) { _, _ -> }
             .setPositiveButton("Close", null)
             .show()
+    }
+
+    // ─── WEB ADMIN ─────────────────────────────────────────────
+
+    private fun openWeb() {
+        startActivity(android.content.Intent(this, WebActivity::class.java).apply {
+            putExtra("url", "http://192.168.0.1/")
+        })
     }
 
     // ─── PASSWORD ─────────────────────────────────────────────
