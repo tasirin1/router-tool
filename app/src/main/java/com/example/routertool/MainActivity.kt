@@ -11,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<MaterialCardView>(R.id.btnRestart).setOnClickListener { confirmRestart() }
         findViewById<MaterialCardView>(R.id.btnStatus).setOnClickListener { checkConnection() }
         findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { openInfo() }
+        findViewById<MaterialCardView>(R.id.btnDevices).setOnClickListener { showDevices() }
         findViewById<MaterialCardView>(R.id.btnPassword).setOnClickListener { togglePassword() }
         findViewById<MaterialButton>(R.id.btnSavePassword).setOnClickListener { changePassword() }
     }
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun confirmRestart() {
         AlertDialog.Builder(this)
-            .setTitle("🔄 Restart Router")
+            .setTitle("Restart Router")
             .setMessage("Restart the router?\nConnection will drop for ~30 sec.")
             .setPositiveButton("Yes") { _, _ -> doRestart() }
             .setNegativeButton("Cancel", null)
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 post("http://192.168.0.1/goform/SysToolReboot", "GO=system_reboot.asp")
                 ui.post {
                     status("Restart sent! Wait ~30s", "#2E7D32", true)
-                    toast("✅ Restart sent!")
+                    toast("Restart sent!")
                 }
             } catch (_: Exception) {
                 ui.post { status("Router offline (restart OK)", "#2E7D32", true) }
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 ui.post {
                     if (code == 302 || code == 200) {
                         status("Router responds (HTTP $code)", "#2E7D32", true)
-                        toast("✅ Router is alive")
+                        toast("Router is alive")
                     } else {
                         status("Unexpected: HTTP $code", "#E65100", true)
                     }
@@ -107,6 +107,88 @@ class MainActivity : AppCompatActivity() {
         ))
     }
 
+    // ─── DEVICES ──────────────────────────────────────────────
+
+    private fun showDevices() {
+        status("Scanning devices...", "#E65100", true)
+        bg.execute {
+            try {
+                val html = fetch("http://192.168.0.1/ClientStatus.htm")
+                val list = parseDevices(html)
+                ui.post { showDeviceResult(list) }
+            } catch (_: Exception) {
+                try {
+                    val html = fetch("http://192.168.0.1/wlan_clients.htm")
+                    val list = parseDevices(html)
+                    ui.post { showDeviceResult(list) }
+                } catch (_: Exception) {
+                    ui.post {
+                        status("Cannot fetch devices", "#C62828", false)
+                        toast("Router unreachable")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun parseDevices(html: String): List<String> {
+        val clean = html.replace(Regex("<[^>]+>"), " ").replace("&nbsp;", " ")
+        val result = mutableListOf<String>()
+
+        // Match IP + MAC in same line
+        val ip = Regex("""(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})""")
+        val mac = Regex("""([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})""")
+        
+        for (line in clean.split("\n")) {
+            val trimmed = line.trim()
+            if (trimmed.length < 10) continue
+            
+            val ipMatch = ip.find(trimmed)
+            val macMatch = mac.find(trimmed)
+            
+            if (ipMatch != null && macMatch != null) {
+                val ipStr = ipMatch.value
+                val macStr = macMatch.value
+                // Extract hostname (anything between IP and MAC or after MAC)
+                val remainder = trimmed
+                    .replace(ipStr, "")
+                    .replace(macStr, "")
+                    .trim()
+                    .split(Regex("\\s+"))
+                    .filter { it.length > 1 && !it.startsWith("http") && !it.contains("/") }
+                val name = if (remainder.isNotEmpty()) remainder.first() else "Unknown"
+                result.add("$ipStr  $macStr  $name")
+            }
+        }
+
+        if (result.isEmpty()) {
+            // Fallback: just list unique IPs
+            for (m in ip.findAll(clean)) {
+                val candidate = m.value
+                if (candidate != "192.168.0.1" && candidate != "0.0.0.0" && !result.any { it.startsWith(candidate) }) {
+                    result.add("$candidate  -  Unknown")
+                }
+            }
+        }
+
+        return result.take(20)
+    }
+
+    private fun showDeviceResult(list: List<String>) {
+        if (list.isEmpty()) {
+            status("No devices found", "#E65100", true)
+            toast("No devices detected")
+            return
+        }
+        status("${list.size} device(s) connected", "#2E7D32", true)
+        val items = list.mapIndexed { i, d -> "${i + 1}. $d" }.toTypedArray()
+        AlertDialog.Builder(this)
+            .setTitle("Connected Devices (${list.size})")
+            .setItems(items) { _, _ -> }
+            .setPositiveButton("Close", null)
+            .show()
+    }
+
     // ─── PASSWORD ─────────────────────────────────────────────
 
     private fun togglePassword() {
@@ -127,7 +209,7 @@ class MainActivity : AppCompatActivity() {
                 val code = post("http://192.168.0.1/goform/SysToolChangePwd", "newpwd=$p1&pwd2=$p2")
                 ui.post {
                     status("Password changed (HTTP $code)", "#2E7D32", true)
-                    toast("✅ Password changed!")
+                    toast("Password changed!")
                 }
             } catch (e: Exception) {
                 ui.post {
@@ -138,7 +220,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // ─── HTTP HELPER ──────────────────────────────────────────
+    // ─── HTTP HELPERS ─────────────────────────────────────────
+
+    private fun fetch(url: String): String {
+        val conn = URL(url).openConnection() as HttpURLConnection
+        conn.connectTimeout = 5000
+        conn.readTimeout = 5000
+        return conn.inputStream.bufferedReader().use { it.readText() }.also { conn.disconnect() }
+    }
 
     private fun post(url: String, body: String): Int {
         val conn = URL(url).openConnection() as HttpURLConnection
@@ -164,7 +253,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "  $msg  ", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
