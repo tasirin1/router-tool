@@ -5,51 +5,70 @@
     android:viewportWidth="320"
     android:viewportHeight="180">
 
+    <!-- Dark blue background -->
     <path
         android:fillColor="#0D47A1"
         android:pathData="M0,0L320,0L320,180L0,180Z" />
 
+    <!-- Lighter stripe -->
     <path
         android:fillColor="#1565C0"
-        android:pathData="M120,95 L200,95 L200,108 L120,108Z" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M126,90 L194,90 L194,94 L126,94Z" />
+        android:pathData="M0,150L320,150L320,180L0,180Z" />
 
+    <!-- Router body -->
+    <path
+        android:fillColor="#1976D2"
+        android:pathData="M110,100 L210,100 L210,120 L110,120Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M127,90 L129,90 L128,70 L126,70Z" />
+        android:pathData="M118,94 L202,94 L202,100 L118,100Z" />
+
+    <!-- Antenna left -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M120,94 L122,94 L121,68 L119,68Z" />
     <path
         android:fillColor="#FF6F00"
-        android:pathData="M127,70 L127,70 C130,70 130,65 127,65 C124,65 124,70 127,70Z" />
+        android:pathData="M121,68 C123,68 123,63 121,63 C119,63 119,68 121,68Z" />
 
+    <!-- Antenna right -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M191,90 L193,90 L194,70 L192,70Z" />
+        android:pathData="M198,94 L200,94 L201,68 L199,68Z" />
     <path
         android:fillColor="#FF6F00"
-        android:pathData="M192,70 L192,70 C195,70 195,65 192,65 C189,65 189,70 192,70Z" />
+        android:pathData="M200,68 C202,68 202,63 200,63 C198,63 198,68 200,68Z" />
 
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M134,99 A2,2 0 1,1 139,99 A2,2 0 1,1 134,99Z" />
+    <!-- LED dots -->
     <path
         android:fillColor="#4CAF50"
-        android:pathData="M145,99 A2,2 0 1,1 150,99 A2,2 0 1,1 145,99Z" />
+        android:pathData="M128,108 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M145,108 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
     <path
         android:fillColor="#FFC107"
-        android:pathData="M156,99 A2,2 0 1,1 161,99 A2,2 0 1,1 156,99Z" />
+        android:pathData="M162,108 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M179,108 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M196,108 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
 
+    <!-- WiFi icon arcs -->
+    <path
+        android:fillColor="#90CAF9"
+        android:pathData="M160,126 C153,126 148,131 148,138 C148,145 153,150 160,150 C167,150 172,145 172,138 C172,131 167,126 160,126Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M160,112Q145,125 160,138Q175,125 160,112Z" />
+        android:pathData="M160,130 C156,130 152,134 152,138 C152,142 156,146 160,146 C164,146 168,142 168,138 C168,134 164,130 160,130Z" />
+    <path
+        android:fillColor="#215A9A"
+        android:pathData="M160,134 C158,134 156,136 156,138 C156,140 158,142 160,142 C162,142 164,140 164,138 C164,136 162,134 160,134Z" />
 
-    <text
+    <!-- Text "Router" using path -->
+    <path
         android:fillColor="#FFFFFF"
-        android:textSize="16sp"
-        android:fontFamily="sans-serif-medium"
-        android:x="160"
-        android:y="155"
-        android:text="Router Tool"
-        android:textAlignment="center" />
+        android:pathData="M55,165L70,165L70,168L65,168L65,178L60,178L60,168L55,168Z" />
 </vector>
