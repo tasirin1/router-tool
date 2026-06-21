@@ -1,31 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Router Tool</string>
-    <string name="router_ip">192.168.0.1</string>
-
-    <!-- Cards -->
     <string name="restart">Restart</string>
-    <string name="restart_desc">Restart Tenda router</string>
     <string name="status">Check</string>
-    <string name="status_desc">Test router response</string>
     <string name="password">Password</string>
-    <string name="password_desc">Change admin password</string>
     <string name="info">Info</string>
-    <string name="info_desc">Device &amp; connection info</string>
-
-    <!-- Actions -->
-    <string name="restart_confirm">Restart the router?\nConnection will drop for ~30 sec.</string>
-    <string name="restart_sent">✅ Restart command sent!</string>
-    <string name="restart_wait">Wait ~30 seconds…</string>
-    <string name="password_hint">New password (min 3 chars)</string>
-    <string name="password_confirm">Confirm password</string>
-    <string name="password_error_min">Password must be at least 3 characters</string>
-    <string name="password_error_match">Passwords do not match!</string>
-    <string name="password_ok">✅ Password changed successfully!</string>
-    <string name="status_ok">✅ Router is responding</string>
-    <string name="status_fail">❌ Router not responding</string>
-    <string name="status_checking">Checking connection…</string>
-    <string name="btn_save">Save</string>
+    <string name="done">Done</string>
+    <string name="failed">Failed</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
 </resources>

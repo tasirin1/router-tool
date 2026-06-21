@@ -4,9 +4,6 @@
         <item name="colorPrimary">#0D47A1</item>
         <item name="colorPrimaryVariant">#002171</item>
         <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#1565C0</item>
-        <item name="colorSecondaryVariant">#003C8F</item>
-        <item name="colorOnSecondary">#FFFFFF</item>
         <item name="android:statusBarColor">#002171</item>
         <item name="android:navigationBarColor">#F0F4F8</item>
         <item name="android:windowLightNavigationBar">true</item>
