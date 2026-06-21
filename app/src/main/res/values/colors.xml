@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="surface">#FFFFFF</color>
-    <color name="background">#F5F5FA</color>
-    <color name="on_surface">#1A1A2E</color>
-    <color name="text_secondary">#8E8E9A</color>
-    <color name="primary">#4A6CF7</color>
-    <color name="primary_dark">#3B5DE7</color>
-    <color name="accent_green">#22C55E</color>
-    <color name="accent_red">#EF4444</color>
-    <color name="divider">#EEEEF2</color>
+    <color name="background">#F0F4F8</color>
+    <color name="on_surface">#0D2137</color>
+    <color name="text_secondary">#6B7B8D</color>
+    <color name="primary">#0D47A1</color>
+    <color name="primary_dark">#002171</color>
+    <color name="tenda_blue">#1565C0</color>
+    <color name="tenda_light">#E3F2FD</color>
+    <color name="accent_green">#2E7D32</color>
+    <color name="accent_red">#C62828</color>
+    <color name="divider">#E0E6ED</color>
 
-    <color name="card_restart">#FFF1F0</color>
-    <color name="card_status">#F0FFF4</color>
-    <color name="card_wifi">#F0F5FF</color>
-    <color name="card_info">#F8F0FF</color>
-    <color name="card_speed">#F0FFFE</color>
-    <color name="card_password">#FFF8F0</color>
+    <color name="card_restart">#FFEBEE</color>
+    <color name="card_status">#E8F5E9</color>
+    <color name="card_info">#E3F2FD</color>
+    <color name="card_password">#FFF8E1</color>
 </resources>

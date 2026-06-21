@@ -18,30 +18,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ═══ Title ═══ -->
-            <LinearLayout
+            <!-- ═══ Tenda Header ═══ -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginTop="4dp"
+                app:cardElevation="2dp"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="0dp">
 
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Router Tool"
-                    android:textColor="#1A1A2E"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:background="#0D47A1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="192.168.0.1"
-                    android:textColor="#8E8E9A"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="Tenda Router"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:layout_marginEnd="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Router Tool"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="192.168.0.1"
+                            android:textColor="#90CAF9"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- ═══ Status ═══ -->
             <com.google.android.material.card.MaterialCardView
@@ -354,7 +376,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
                         android:layout_marginTop="14dp"
-                        android:backgroundTint="#4A6CF7"
+                        android:backgroundTint="#0D47A1"
                         android:text="Save"
                         android:textAllCaps="false"
                         android:textSize="15sp" />
@@ -366,7 +388,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Router Tool · 192.168.0.1"
+                android:text="Router Tool · Tenda"
                 android:textColor="#C0C0C8"
                 android:textSize="11sp" />
 
