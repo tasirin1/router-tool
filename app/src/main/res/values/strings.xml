@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Router Tool</string>
-    <string name="restart">Restart</string>
-    <string name="status">Check</string>
-    <string name="password">Password</string>
-    <string name="info">Info</string>
-    <string name="done">Done</string>
-    <string name="failed">Failed</string>
-    <string name="yes">Yes</string>
-    <string name="cancel">Cancel</string>
 </resources>
