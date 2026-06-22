@@ -14,6 +14,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
+import java.net.InetAddress
 import java.net.URL
 import java.util.concurrent.Executors
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<MaterialCardView>(R.id.btnInfo).setOnClickListener { openInfo() }
         findViewById<MaterialCardView>(R.id.btnDevices).setOnClickListener { showDevices() }
         findViewById<MaterialCardView>(R.id.btnWeb).setOnClickListener { openWeb() }
+        findViewById<MaterialCardView>(R.id.btnScan).setOnClickListener { scanNetwork() }
         findViewById<MaterialCardView>(R.id.btnPassword).setOnClickListener { togglePassword() }
         findViewById<MaterialButton>(R.id.btnSavePassword).setOnClickListener { changePassword() }
     }
@@ -196,6 +198,121 @@ class MainActivity : AppCompatActivity() {
         startActivity(android.content.Intent(this, WebActivity::class.java).apply {
             putExtra("url", "http://192.168.0.1/")
         })
+    }
+
+    // ─── NETWORK SCAN ─────────────────────────────────────────
+
+    private fun scanNetwork() {
+        status("Scanning subnet...", "#E65100", true)
+        toast("Scanning all IPs, please wait...")
+        bg.execute {
+            try {
+                // Get local IP
+                val localIp = InetAddress.getLocalHost()
+                val localAddr = localIp.hostAddress ?: "192.168.0.101"
+                
+                // Determine subnet (assume /24)
+                val parts = localAddr.split(".")
+                if (parts.size != 4) {
+                    ui.post { status("Invalid IP", "#C62828", false) }
+                    return@execute
+                }
+                val prefix = "${parts[0]}.${parts[1]}.${parts[2]}."
+                
+                val results = mutableListOf<String>()
+                val ports = intArrayOf(80, 443, 8080, 8443, 8081, 8000, 3000, 5000, 9090, 8888, 9000, 81, 444, 1883, 22, 23, 8291, 2000, 53)
+                val checked = mutableSetOf<String>()
+                
+                // Scan subnet for open ports + HTTP detection
+                for (i in 1..254) {
+                    val ip = "$prefix$i"
+                    var found = false
+                    val ipServices = mutableListOf<String>()
+                    
+                    for (port in ports) {
+                        try {
+                            val s = java.net.Socket()
+                            s.connect(java.net.InetSocketAddress(ip, port), 300)
+                            if (s.isConnected) {
+                                s.close()
+                                val service = guessService(port)
+                                ipServices.add("    Port $port ($service)")
+                                found = true
+                                
+                                // If web port, try to detect HTTP title
+                                if (port in intArrayOf(80, 443, 8080, 8443, 8081, 8000, 3000, 5000, 8888, 9000, 81, 444)) {
+                                    try {
+                                        val testUrl = if (port == 443 || port == 8443) "https://$ip" else "http://$ip"
+                                        val conn = java.net.URL(testUrl).openConnection() as java.net.HttpURLConnection
+                                        conn.connectTimeout = 1000
+                                        conn.readTimeout = 1000
+                                        conn.instanceFollowRedirects = false
+                                        val code = conn.responseCode
+                                        val header = conn.getHeaderField("Server") ?: ""
+                                        val loc = conn.getHeaderField("Location") ?: ""
+                                        ipServices[ipServices.size - 1] += " (HTTP $code${if (header.isNotEmpty()) " · $header" else ""}${if (loc.isNotEmpty()) " → $loc" else ""})"
+                                        conn.disconnect()
+                                    } catch (_: Exception) { }
+                                }
+                            }
+                        } catch (_: Exception) { }
+                    }
+                    
+                    if (found && ip !in checked) {
+                        checked.add(ip)
+                        results.add("$ip")
+                        results.addAll(ipServices)
+                    }
+                }
+                
+                ui.post { showScanResult(results) }
+            } catch (e: Exception) {
+                ui.post {
+                    status("Scan failed: ${e.message}", "#C62828", false)
+                    toast("Failed: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun guessService(port: Int): String = when (port) {
+        80 -> "HTTP"
+        443 -> "HTTPS"
+        8080 -> "HTTP-Alt"
+        8443 -> "HTTPS-Alt"
+        8081 -> "HTTP-Alt2"
+        8000 -> "HTTP-Alt3"
+        3000 -> "Web-Dev"
+        5000 -> "Web-Alt"
+        8888 -> "Web-Dash"
+        9000 -> "Web-Alt4"
+        81 -> "HTTP-Alt5"
+        444 -> "HTTPS-Alt5"
+        22 -> "SSH"
+        23 -> "Telnet"
+        8291 -> "Winbox"
+        2000 -> "Bandwidth"
+        53 -> "DNS"
+        1883 -> "MQTT"
+        else -> "Unknown"
+    }
+
+    private fun showScanResult(list: List<String>) {
+        if (list.isEmpty()) {
+            status("No hosts found", "#E65100", true)
+            toast("No active hosts detected")
+            return
+        }
+        
+        val hostCount = list.count { !it.startsWith("    ") }
+        status("Found $hostCount host(s)", "#2E7D32", true)
+        
+        val items = list.toTypedArray()
+        AlertDialog.Builder(this)
+            .setTitle("Network Scan ($hostCount hosts)")
+            .setItems(items) { _, _ -> }
+            .setPositiveButton("Close", null)
+            .show()
     }
 
     // ─── PASSWORD ─────────────────────────────────────────────
